@@ -246,7 +246,7 @@ window.unfollow = async () => {
                 <a style='color:inherit' target='_blank' href='../${user.username}'> ${
                 user.username
             }</a>
-                <span style='color:#00ffff'> [${counter + 1}/${userIdsToUnfollow.length}]</span>
+                <span style='color:red'> [${counter + 1}/${userIdsToUnfollow.length}]</span>
             </div>`;
         } catch (e) {
             console.error(e);
@@ -264,7 +264,7 @@ window.unfollow = async () => {
         }
         if (counter % 5 === 0) {
             elSleepingContainer.style.display = 'block';
-            elSleepingContainer.innerHTML = 'Sleeping 1 minutes to prevent getting temp blocked...';
+            elSleepingContainer.innerHTML = 'Sleeping 5 minutes to prevent getting temp blocked...';
             scrollToBottom();
             await sleep(300000);
         }
