@@ -222,10 +222,11 @@ window.unfollow = async () => {
     if (csrftoken === undefined) {
         throw new Error('csrftoken cookie is undefined');
     }
+		
     const elSleepingContainer = getElementByClass('.iu_sleeping-container');
     const elResultsContainer = getElementByClass('.iu_results-container');
     elResultsContainer.innerHTML = '';
-
+	
     const scrollToBottom = () => window.scrollTo(0, elResultsContainer.scrollHeight);
 
     isActiveProcess = true;
@@ -242,12 +243,13 @@ window.unfollow = async () => {
                 mode: 'cors',
                 credentials: 'include',
             });
-            elResultsContainer.innerHTML += `<div style='padding:0.5rem;'>Unfollowed
-                <a style='color:inherit' target='_blank' href='../${user.username}'> ${
-                user.username
-            }</a>
-                <span style='color:red'> [${counter + 1}/${userIdsToUnfollow.length}]</span>
-            </div>`;
+            elResultsContainer.innerHTML += 
+			`<div style='padding:0.5rem; display:flex;'>
+				<div>Unfollowed&nbsp;</div>
+                <div style='width:150px;'><a style='color:inherit' target='_blank' href='../${user.username}'> ${user.username}</a></div>
+				<div style='color:red;'> [${counter + 1}/${userIdsToUnfollow.length}]</div>
+             </div>`;
+			
         } catch (e) {
             console.error(e);
             elResultsContainer.innerHTML += `<div style='padding:1rem;color:red;'>Failed to unfollow ${
