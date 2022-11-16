@@ -246,7 +246,7 @@ window.unfollow = async () => {
             elResultsContainer.innerHTML += 
 			`<div style='padding:0.5rem; display:flex;'>
 				<div>Unfollowed&nbsp;</div>
-                <div style='width:150px;'><a style='color:inherit' target='_blank' href='../${user.username}'> ${user.username}</a></div>
+                <div style='width:200px;'><a style='color:inherit' target='_blank' href='../${user.username}'> ${user.username}</a></div>
 				<div style='color:red;'> [${counter + 1}/${userIdsToUnfollow.length}]</div>
              </div>`;
 			
