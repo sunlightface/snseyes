@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+ document.getElementById("preview").onclick=processText;
+}
+
+function processText() {
+
+    var txtBox = document.getElementById("inputbox");
+
+    var regramAddr = txtBox.value.split("\n");
+
+    var weakKeyword = ['328| ', '534| ', '329| ', '535| '];
+    var weakKeywordCount = [' |100', ' |1000', ' |900', ' |2'];
+
+    var strongKeyword1 = ['329| ', '552| ', '534| ', '448| '];
+    var strongKeyword1Count = [' |100', ' |100', ' |1000', ' |30'];
+
+    var strongKeyword2 = ['329| ', '2000| '];
+    var strongKeyword2Count = [' 2000|', ' 1000|'];
+
+    var resultString = '';
+    for (var i = 0; i < 4; i++) {
+        resultString += weakKeyword[0] + regramAddr[i] + weakKeywordCount[0] + "<br />";
+        resultString += weakKeyword[1] + regramAddr[i] + weakKeywordCount[1] + "<br />";
+        resultString += weakKeyword[2] + regramAddr[i] + weakKeywordCount[2] + "<br />";
+        resultString += weakKeyword[3] + regramAddr[i] + weakKeywordCount[3] + "<br /><br />";
+    }
+	resultString += "----------------------------Strong Keyword----------------------------<br />";
+	
+	var resultString1 = '';
+	
+	 for (var i = 0; i < 4; i++) {
+        resultString1 += strongKeyword1[0] + regramAddr[i] + strongKeyword1Count[0] + "<br />";
+        resultString1 += strongKeyword1[1] + regramAddr[i] + strongKeyword1Count[1] + "<br />";
+        resultString1 += strongKeyword1[2] + regramAddr[i] + strongKeyword1Count[2] + "<br />";
+        resultString1 += strongKeyword1[3] + regramAddr[i] + strongKeyword1Count[3] + "<br /><br />";
+    }
+	
+    var blk = document.getElementById("result");
+	
+    blk.innerHTML = resultString + resultString1;
+}
+
+</script>
+
+</head>
+<body>
+<textarea id="inputbox" cols="100" rows="10"></textarea>
+<div><button id="preview">Preview</button></div>
+<div id="result"></div>
+</body>
