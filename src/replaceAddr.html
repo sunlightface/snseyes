@@ -28,11 +28,19 @@ function convertForm() {
 	
 	var regramAddr = [];
 	
-	replaceNewline = replaceNewline.filter((element) => element !=='');
+	for(var i = 0; i < replaceNewline.length; i++){
+		
+		if(regex.test(replaceNewline[i]))
+		{
+			regramAddr.push((replaceNewline[i]).match(regex));
+		}
+		
+	}
+	var count = regramAddr.length;
 	
 	resultString += "----------------------------Reels Keyword----------------------------<br />";
 	
-	for (var i = 0; i < replaceNewline.length; i++) {
+	for (var i = 0; i < count; i++) {
 		
 		regramAddr.push((replaceNewline[i]).match(regex));
 		
@@ -45,7 +53,7 @@ function convertForm() {
 	
 	var resultString1 = '';
 	
-	 for (var i = 0; i < replaceNewline.length; i++) {
+	 for (var i = 0; i < count; i++) {
 		
         resultString1 += strongKeyword1[0] + regramAddr[i] + strongKeyword1Count[0] + "<br />";
         resultString1 += strongKeyword1[1] + regramAddr[i] + strongKeyword1Count[1] + "<br />";
@@ -57,7 +65,7 @@ function convertForm() {
 	
 	var resultString2 = '';
 	
-	for (var i = 0; i < replaceNewline.length; i++) {
+	for (var i = 0; i < count; i++) {
 		
         resultString2 += strongKeyword2[0] + regramAddr[i] + strongKeyword2Count[0] + "<br />";
         resultString2 += strongKeyword2[1] + regramAddr[i] + strongKeyword2Count[1] + "<br />";
