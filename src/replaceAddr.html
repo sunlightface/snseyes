@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <head>
-<title>Recipe</title>
+<title>SNSEYES</title>
 <script>
 
 window.onload=function() {
- document.getElementById("preview").onclick=processregramAddr;
+ document.getElementById("preview").onclick=convertForm;
 }
 
-function processregramAddr() {
+function convertForm() {
 
     var txtBox = document.getElementById("inputbox");
-	var count = (document.getElementById("count")).value;
-	count = Number(count);
-	
+		
 	var regex =  /(http(s)?:\/\/|www.)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}([\/a-z0-9-%#?&=\w])+(\.[a-z0-9]{2,4}(\?[\/a-z0-9-%#?&=\w]+)*)*/gi;
 	
     var replaceNewline = txtBox.value.split("\n");
@@ -28,41 +26,41 @@ function processregramAddr() {
 
     var resultString = '';
 	
+	var regramAddr = [];
+	
+	replaceNewline = replaceNewline.filter((element) => element !=='');
+	
 	resultString += "----------------------------Reels Keyword----------------------------<br />";
 	
-    for (var i = 0; i < count; i++) {
-		var regramAddr = '';
-		regramAddr += replaceNewline[i];
-		regramAddr = regramAddr.match(regex);
-        resultString += weakKeyword[0] + regramAddr + weakKeywordCount[0] + "<br />";
-        resultString += weakKeyword[1] + regramAddr + weakKeywordCount[1] + "<br />";
-        resultString += weakKeyword[2] + regramAddr + weakKeywordCount[2] + "<br />";
-        resultString += weakKeyword[3] + regramAddr + weakKeywordCount[3] + "<br />";
+	for (var i = 0; i < replaceNewline.length; i++) {
+		
+		regramAddr.push((replaceNewline[i]).match(regex));
+		
+        resultString += weakKeyword[0] + regramAddr[i] + weakKeywordCount[0] + "<br />";
+        resultString += weakKeyword[1] + regramAddr[i] + weakKeywordCount[1] + "<br />";
+        resultString += weakKeyword[2] + regramAddr[i] + weakKeywordCount[2] + "<br />";
+        resultString += weakKeyword[3] + regramAddr[i] + weakKeywordCount[3] + "<br />";
     }
 	resultString += "----------------------------Normal Keyword----------------------------<br />";
 	
 	var resultString1 = '';
 	
-	 for (var i = 0; i < count; i++) {
-		var regramAddr = '';
-		regramAddr += replaceNewline[i];
-		regramAddr = regramAddr.match(regex);
-        resultString1 += strongKeyword1[0] + regramAddr + strongKeyword1Count[0] + "<br />";
-        resultString1 += strongKeyword1[1] + regramAddr + strongKeyword1Count[1] + "<br />";
-        resultString1 += strongKeyword1[2] + regramAddr + strongKeyword1Count[2] + "<br />";
-        resultString1 += strongKeyword1[3] + regramAddr + strongKeyword1Count[3] + "<br />";
+	 for (var i = 0; i < replaceNewline.length; i++) {
+		
+        resultString1 += strongKeyword1[0] + regramAddr[i] + strongKeyword1Count[0] + "<br />";
+        resultString1 += strongKeyword1[1] + regramAddr[i] + strongKeyword1Count[1] + "<br />";
+        resultString1 += strongKeyword1[2] + regramAddr[i] + strongKeyword1Count[2] + "<br />";
+        resultString1 += strongKeyword1[3] + regramAddr[i] + strongKeyword1Count[3] + "<br />";
     }
 	
 	resultString1 += "----------------------------Eyebrow tattoo Keyword----------------------------<br />";
 	
 	var resultString2 = '';
 	
-	for (var i = 0; i < count; i++) {
-		var regramAddr = '';
-		regramAddr += replaceNewline[i];
-		regramAddr = regramAddr.match(regex);
-        resultString2 += strongKeyword2[0] + regramAddr + strongKeyword2Count[0] + "<br />";
-        resultString2 += strongKeyword2[1] + regramAddr + strongKeyword2Count[1] + "<br />";
+	for (var i = 0; i < replaceNewline.length; i++) {
+		
+        resultString2 += strongKeyword2[0] + regramAddr[i] + strongKeyword2Count[0] + "<br />";
+        resultString2 += strongKeyword2[1] + regramAddr[i] + strongKeyword2Count[1] + "<br />";
 	}
 	
     var blk = document.getElementById("result");
@@ -75,7 +73,6 @@ function processregramAddr() {
 </head>
 <body>
 <textarea id="inputbox" cols="100" rows="10"></textarea>
-<textarea id="count" cols="10" rows="10"></textarea>
 <div><button id="preview">Preview</button></div>
 <div id="result"></div>
 </body>
